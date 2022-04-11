@@ -27,7 +27,7 @@ const Map: React.FC<MapProps> = ({
 
   useEffect(() => {
     if (ref.current && !map) {
-      setMap(new window.google.maps.Map(ref.current, {}));
+      setMap(new window.google.maps.Map(ref.current, { mapId: options.mapId }));
     }
   }, [ref, map]);
   // [END maps_react_map_component_add_map_hooks]

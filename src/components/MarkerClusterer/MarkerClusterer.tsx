@@ -16,24 +16,38 @@ const MarkerClusterer: React.FC<MarkerClustererProps> = ({
 }) => {
   const map = useContext(MapContext);
   const clusterer = useRef<Clusterer | undefined>();
+  const [markers, setMarkers] = React.useState<Array<google.maps.Marker>>([]);
 
   useEffect(() => {
-    if (!map || !children) return;
+    if (!map) return;
 
     if (!clusterer.current)
-      clusterer.current = new Clusterer({ ...options, markers: [], map });
+      clusterer.current = new Clusterer({
+        ...options,
+        markers: [],
+        map
+      });
+  }, [map]);
 
-    const markers = children?.map(({ props }) => {
+  useEffect(() => {
+    if (!children) return;
+
+    const _markers = children.map(({ props }) => {
       const marker = new window.google.maps.Marker({
-        position: props.position
+        position: props.position,
+        label: props.label
       });
 
       return marker;
     });
 
-    clusterer.current.clearMarkers();
-    clusterer.current.addMarkers(markers);
-  }, [map, children]);
+    clusterer.current?.clearMarkers(true);
+    setMarkers(_markers);
+  }, [children]);
+
+  useEffect(() => {
+    clusterer.current?.addMarkers(markers);
+  }, [markers]);
 
   return null;
 };

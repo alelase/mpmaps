@@ -19,7 +19,7 @@ var Map = function (_a) {
     var _b = useState(), map = _b[0], setMap = _b[1];
     useEffect(function () {
         if (ref.current && !map) {
-            setMap(new window.google.maps.Map(ref.current, {}));
+            setMap(new window.google.maps.Map(ref.current, { mapId: options.mapId }));
         }
     }, [ref, map]);
     // [END maps_react_map_component_add_map_hooks]

@@ -67,7 +67,7 @@
     "dist"
   ],
   "dependencies": {
-    "@googlemaps/markerclusterer": "^1.0.27",
+    "@googlemaps/markerclusterer": "^2.0.2",
     "@googlemaps/react-wrapper": "^1.1.15",
     "@types/googlemaps": "^3.43.3",
     "fast-equals": "^2.0.3"

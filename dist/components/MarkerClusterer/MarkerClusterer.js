@@ -21,27 +21,38 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 import { MarkerClusterer as Clusterer } from '@googlemaps/markerclusterer';
-import { useContext, useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import MapContext from '../../contexts/MapContext';
 var MarkerClusterer = function (_a) {
     var children = _a.children, options = __rest(_a, ["children"]);
     var map = useContext(MapContext);
     var clusterer = useRef();
+    var _b = React.useState([]), markers = _b[0], setMarkers = _b[1];
     useEffect(function () {
-        if (!map || !children)
+        if (!map)
             return;
         if (!clusterer.current)
             clusterer.current = new Clusterer(__assign(__assign({}, options), { markers: [], map: map }));
-        var markers = children === null || children === void 0 ? void 0 : children.map(function (_a) {
+    }, [map]);
+    useEffect(function () {
+        var _a;
+        if (!children)
+            return;
+        var _markers = children.map(function (_a) {
             var props = _a.props;
             var marker = new window.google.maps.Marker({
-                position: props.position
+                position: props.position,
+                label: props.label
             });
             return marker;
         });
-        clusterer.current.clearMarkers();
-        clusterer.current.addMarkers(markers);
-    }, [map, children]);
+        (_a = clusterer.current) === null || _a === void 0 ? void 0 : _a.clearMarkers(true);
+        setMarkers(_markers);
+    }, [children]);
+    useEffect(function () {
+        var _a;
+        (_a = clusterer.current) === null || _a === void 0 ? void 0 : _a.addMarkers(markers);
+    }, [markers]);
     return null;
 };
 export default MarkerClusterer;
