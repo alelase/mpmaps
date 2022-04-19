@@ -1,9 +1,31 @@
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 import React from 'react';
 import Marker from '../Marker/Marker';
-var color = '#ff0000';
+var color = '#0000ff';
 var svg = window.btoa("\n  <svg fill=\"".concat(color, "\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 240 240\">\n    <circle cx=\"120\" cy=\"120\" opacity=\".6\" r=\"70\" />\n    <circle cx=\"120\" cy=\"120\" opacity=\".3\" r=\"90\" />\n    <circle cx=\"120\" cy=\"120\" opacity=\".2\" r=\"110\" />\n  </svg>"));
 var ClusterMarker = function (_a) {
-    var position = _a.position, count = _a.count;
+    var position = _a.position, count = _a.count, options = __rest(_a, ["position", "count"]);
     var clusterOptions = {
         icon: {
             url: "data:image/svg+xml;base64,".concat(svg),
@@ -16,7 +38,7 @@ var ClusterMarker = function (_a) {
         },
         zIndex: Number(google.maps.Marker.MAX_ZINDEX)
     };
-    return (React.createElement(Marker, { position: position, icon: clusterOptions.icon, label: clusterOptions.label, zIndex: clusterOptions.zIndex }));
+    return (React.createElement(Marker, __assign({ position: position, icon: clusterOptions.icon, label: clusterOptions.label, zIndex: clusterOptions.zIndex }, options)));
 };
 export default ClusterMarker;
 //# sourceMappingURL=ClusterMarker.js.map

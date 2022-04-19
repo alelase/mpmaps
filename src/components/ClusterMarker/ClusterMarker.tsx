@@ -2,7 +2,7 @@ import React from 'react';
 
 import Marker from '../Marker/Marker';
 
-const color = '#ff0000';
+const color = '#0000ff';
 
 const svg = window.btoa(`
   <svg fill="${color}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
@@ -16,7 +16,11 @@ interface ClusterMarkerOptions {
   count: number;
 }
 
-const ClusterMarker: React.FC<ClusterMarkerOptions> = ({ position, count }) => {
+const ClusterMarker: React.FC<ClusterMarkerOptions> = ({
+  position,
+  count,
+  ...options
+}) => {
   const clusterOptions = {
     icon: {
       url: `data:image/svg+xml;base64,${svg}`,
@@ -36,6 +40,7 @@ const ClusterMarker: React.FC<ClusterMarkerOptions> = ({ position, count }) => {
       icon={clusterOptions.icon}
       label={clusterOptions.label}
       zIndex={clusterOptions.zIndex}
+      {...options}
     />
   );
 };

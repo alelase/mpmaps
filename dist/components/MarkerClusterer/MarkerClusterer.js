@@ -23,7 +23,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 import { MarkerClusterer as Clusterer } from '@googlemaps/markerclusterer';
 import React, { useContext, useEffect, useRef } from 'react';
 import MapContext from '../../contexts/MapContext';
-var MarkerClusterer = function (_a) {
+export var MarkerClustererComponent = function (_a) {
     var children = _a.children, options = __rest(_a, ["children"]);
     var map = useContext(MapContext);
     var clusterer = useRef();
@@ -38,22 +38,18 @@ var MarkerClusterer = function (_a) {
         var _a;
         if (!children)
             return;
-        var _markers = children.map(function (_a) {
-            var props = _a.props;
-            var marker = new window.google.maps.Marker({
-                position: props.position,
-                label: props.label
-            });
-            return marker;
-        });
+        // If children does not equal markers, update markers
         (_a = clusterer.current) === null || _a === void 0 ? void 0 : _a.clearMarkers(true);
-        setMarkers(_markers);
+        setMarkers(markers);
     }, [children]);
     useEffect(function () {
         var _a;
-        (_a = clusterer.current) === null || _a === void 0 ? void 0 : _a.addMarkers(markers);
+        var _markers = markers.map(function (props) {
+            var marker = new window.google.maps.Marker(__assign({}, props));
+            return marker;
+        });
+        (_a = clusterer.current) === null || _a === void 0 ? void 0 : _a.addMarkers(_markers);
     }, [markers]);
     return null;
 };
-export default MarkerClusterer;
 //# sourceMappingURL=MarkerClusterer.js.map

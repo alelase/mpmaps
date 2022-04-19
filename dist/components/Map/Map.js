@@ -35,7 +35,7 @@ var Map = function (_a) {
     // [START maps_react_map_component_event_hooks]
     useEffect(function () {
         if (map) {
-            ['click', 'idle', 'bounds_changed', 'zoom_changed'].forEach(function (eventName) {
+            ['click', 'idle', 'bounds_changed'].forEach(function (eventName) {
                 return google.maps.event.clearListeners(map, eventName);
             });
             if (onClick) {

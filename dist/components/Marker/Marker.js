@@ -9,14 +9,29 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 import { useContext, useEffect, useState } from 'react';
 import MapContext from '../../contexts/MapContext';
-var Marker = function (options) {
-    var _a = useState(), marker = _a[0], setMarker = _a[1];
+var Marker = function (_a) {
+    var onClick = _a.onClick, options = __rest(_a, ["onClick"]);
+    var _b = useState(), marker = _b[0], setMarker = _b[1];
     var map = useContext(MapContext);
     useEffect(function () {
         if (!marker) {
             setMarker(new google.maps.Marker());
+        }
+        if (marker && onClick) {
+            marker.addListener('click', onClick);
         }
         // remove marker from map on unmount
         return function () {
