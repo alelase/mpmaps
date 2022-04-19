@@ -13,13 +13,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import MapContext from '../../contexts/MapContext';
 import { useDeepCompareEffectForMaps } from './hooks/useDeepCompareEffectForMaps';
 var Map = function (_a) {
-    var onClick = _a.onClick, onIdle = _a.onIdle, onBoundsChanged = _a.onBoundsChanged, onZoomChanged = _a.onZoomChanged, children = _a.children, style = _a.style, options = __rest(_a, ["onClick", "onIdle", "onBoundsChanged", "onZoomChanged", "children", "style"]);
+    var onClick = _a.onClick, onIdle = _a.onIdle, onBoundsChanged = _a.onBoundsChanged, onZoomChanged = _a.onZoomChanged, children = _a.children, style = _a.style, mapId = _a.mapId, options = __rest(_a, ["onClick", "onIdle", "onBoundsChanged", "onZoomChanged", "children", "style", "mapId"]);
     // [START maps_react_map_component_add_map_hooks]
     var ref = useRef(null);
     var _b = useState(), map = _b[0], setMap = _b[1];
     useEffect(function () {
         if (ref.current && !map) {
-            setMap(new window.google.maps.Map(ref.current, { mapId: options.mapId }));
+            setMap(new window.google.maps.Map(ref.current, { mapId: mapId }));
         }
     }, [ref, map]);
     // [END maps_react_map_component_add_map_hooks]

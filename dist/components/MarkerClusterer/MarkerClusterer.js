@@ -38,7 +38,6 @@ export var MarkerClustererComponent = function (_a) {
         var _a;
         if (!children)
             return;
-        // If children does not equal markers, update markers
         (_a = clusterer.current) === null || _a === void 0 ? void 0 : _a.clearMarkers(true);
         setMarkers(markers);
     }, [children]);

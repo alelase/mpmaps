@@ -10,6 +10,7 @@ interface MapProps extends google.maps.MapOptions {
   onIdle?: (map: google.maps.Map) => void;
   onBoundsChanged?: (bounds: google.maps.LatLngBounds | undefined) => void;
   onZoomChanged?: (zoom: number | undefined) => void;
+  mapId?: string;
 }
 
 const Map: React.FC<MapProps> = ({
@@ -19,6 +20,7 @@ const Map: React.FC<MapProps> = ({
   onZoomChanged,
   children,
   style,
+  mapId,
   ...options
 }) => {
   // [START maps_react_map_component_add_map_hooks]
@@ -27,7 +29,7 @@ const Map: React.FC<MapProps> = ({
 
   useEffect(() => {
     if (ref.current && !map) {
-      setMap(new window.google.maps.Map(ref.current, { mapId: options.mapId }));
+      setMap(new window.google.maps.Map(ref.current, { mapId: mapId }));
     }
   }, [ref, map]);
   // [END maps_react_map_component_add_map_hooks]
