@@ -11,7 +11,7 @@ const svg = window.btoa(`
     <circle cx="120" cy="120" opacity=".2" r="110" />
   </svg>`);
 
-interface ClusterMarkerOptions {
+interface ClusterMarkerOptions extends google.maps.MarkerOptions {
   position: google.maps.LatLngLiteral;
   count: number;
 }
