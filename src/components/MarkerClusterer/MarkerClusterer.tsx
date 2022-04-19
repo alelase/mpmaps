@@ -32,6 +32,7 @@ export const MarkerClustererComponent: React.FC<MarkerClustererProps> = ({
   useEffect(() => {
     if (!children) return;
 
+    // If children doe not equal markers, update markers
     clusterer.current?.clearMarkers(true);
     setMarkers(markers);
   }, [children]);

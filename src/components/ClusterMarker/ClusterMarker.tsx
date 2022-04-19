@@ -14,11 +14,13 @@ const svg = window.btoa(`
 interface ClusterMarkerOptions extends google.maps.MarkerOptions {
   position: google.maps.LatLngLiteral;
   count: number;
+  onClick: () => void;
 }
 
 const ClusterMarker: React.FC<ClusterMarkerOptions> = ({
   position,
   count,
+  onClick,
   ...options
 }) => {
   const clusterOptions = {
@@ -40,6 +42,7 @@ const ClusterMarker: React.FC<ClusterMarkerOptions> = ({
       icon={clusterOptions.icon}
       label={clusterOptions.label}
       zIndex={clusterOptions.zIndex}
+      onClick={onClick}
       {...options}
     />
   );
