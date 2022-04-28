@@ -13,10 +13,6 @@ const Marker: React.FC<
       setMarker(new google.maps.Marker());
     }
 
-    if (marker && onClick) {
-      marker.addListener('click', onClick);
-    }
-
     // remove marker from map on unmount
     return () => {
       if (marker) {
@@ -24,6 +20,12 @@ const Marker: React.FC<
       }
     };
   }, [marker]);
+
+  useEffect(() => {
+    if (marker && onClick) {
+      marker.addListener('click', onClick);
+    }
+  }, [onClick]);
 
   useEffect(() => {
     if (marker) {

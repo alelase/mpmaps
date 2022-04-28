@@ -30,9 +30,6 @@ var Marker = function (_a) {
         if (!marker) {
             setMarker(new google.maps.Marker());
         }
-        if (marker && onClick) {
-            marker.addListener('click', onClick);
-        }
         // remove marker from map on unmount
         return function () {
             if (marker) {
@@ -40,6 +37,11 @@ var Marker = function (_a) {
             }
         };
     }, [marker]);
+    useEffect(function () {
+        if (marker && onClick) {
+            marker.addListener('click', onClick);
+        }
+    }, [onClick]);
     useEffect(function () {
         if (marker) {
             marker.setOptions(__assign(__assign({}, options), { map: map }));
