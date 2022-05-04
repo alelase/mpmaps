@@ -23,7 +23,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 import { useContext, useEffect, useState } from 'react';
 import MapContext from '../../contexts/MapContext';
 var Marker = function (_a) {
-    var onClick = _a.onClick, options = __rest(_a, ["onClick"]);
+    var onClick = _a.onClick, infoWindowContent = _a.infoWindowContent, showInfoWindow = _a.showInfoWindow, options = __rest(_a, ["onClick", "infoWindowContent", "showInfoWindow"]);
     var _b = useState(), marker = _b[0], setMarker = _b[1];
     var map = useContext(MapContext);
     useEffect(function () {
@@ -47,6 +47,20 @@ var Marker = function (_a) {
             marker.setOptions(__assign(__assign({}, options), { map: map }));
         }
     }, [marker, options]);
+    useEffect(function () {
+        if (!showInfoWindow)
+            return;
+        var infoWindow = new google.maps.InfoWindow({
+            content: infoWindowContent,
+            disableAutoPan: true
+        });
+        infoWindow.open({
+            anchor: marker,
+            map: map,
+            shouldFocus: false
+        });
+        return function () { return infoWindow.close(); };
+    }, [showInfoWindow, infoWindowContent, marker, map]);
     return null;
 };
 export default Marker;
