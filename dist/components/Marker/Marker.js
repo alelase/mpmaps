@@ -28,7 +28,12 @@ var Marker = function (_a) {
     var map = useContext(MapContext);
     useEffect(function () {
         if (!marker) {
-            setMarker(new google.maps.Marker());
+            setMarker(new google.maps.Marker({
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                hasClickAttribute: false,
+                hasDoubleClickAttribute: false
+            }));
         }
         // remove marker from map on unmount
         return function () {
@@ -42,8 +47,10 @@ var Marker = function (_a) {
             console.log('add click listener!!!');
             marker.addListener('click', onClick);
         }
-        if (marker && onDoubleClick) {
+        if (marker && onDoubleClick && !marker['hasDoubleClickAttribute']) {
             console.log('add dblclick listener!!!');
+            marker['hasDoubleClickAttribute'] = true;
+            //if(marker.hasDblclickAttribute)
             marker.addListener('dblclick', onDoubleClick);
         }
     }, [onClick, onDoubleClick]);
