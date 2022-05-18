@@ -6,7 +6,5 @@ declare const Marker: React.FC<google.maps.MarkerOptions & {
     onDoubleClick?: () => void;
     infoWindowContent?: string;
     showInfoWindow?: boolean;
-    hasClickAttribute?: boolean;
-    hasDoubleClickAttribute?: boolean;
 }>;
 export default Marker;

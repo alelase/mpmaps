@@ -8,8 +8,6 @@ const Marker: React.FC<
     onDoubleClick?: () => void;
     infoWindowContent?: string;
     showInfoWindow?: boolean;
-    hasClickAttribute?: boolean;
-    hasDoubleClickAttribute?: boolean;
   }
 > = ({
   onClick,
