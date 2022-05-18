@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { ExampleComponent } from 'mmaps'
-import 'mmaps/dist/index.css'
+import { ExampleComponent } from 'mpmaps'
+import 'mpmaps/dist/index.css'
 
 const App = () => {
   return <ExampleComponent text="Create React Library Example 😄" />

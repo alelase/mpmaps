@@ -23,7 +23,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 import { useContext, useEffect, useState } from 'react';
 import MapContext from '../../contexts/MapContext';
 var Marker = function (_a) {
-    var onClick = _a.onClick, infoWindowContent = _a.infoWindowContent, showInfoWindow = _a.showInfoWindow, options = __rest(_a, ["onClick", "infoWindowContent", "showInfoWindow"]);
+    var onClick = _a.onClick, onDoubleClick = _a.onDoubleClick, infoWindowContent = _a.infoWindowContent, showInfoWindow = _a.showInfoWindow, options = __rest(_a, ["onClick", "onDoubleClick", "infoWindowContent", "showInfoWindow"]);
     var _b = useState(), marker = _b[0], setMarker = _b[1];
     var map = useContext(MapContext);
     useEffect(function () {
@@ -39,9 +39,14 @@ var Marker = function (_a) {
     }, [marker]);
     useEffect(function () {
         if (marker && onClick) {
+            console.log('add click listener!!!');
             marker.addListener('click', onClick);
         }
-    }, [onClick]);
+        if (marker && onDoubleClick) {
+            console.log('add dblclick listener!!!');
+            marker.addListener('dblclick', onDoubleClick);
+        }
+    }, [onClick, onDoubleClick]);
     useEffect(function () {
         if (marker) {
             marker.setOptions(__assign(__assign({}, options), { map: map }));

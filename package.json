@@ -4,7 +4,7 @@
   "description": "Maps component library based on google maps",
   "author": "",
   "license": "MIT",
-  "repository": "/mmaps",
+  "repository": "/mpmaps",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",
