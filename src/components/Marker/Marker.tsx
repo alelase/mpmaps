@@ -42,15 +42,15 @@ const Marker: React.FC<
   }, [marker]);
 
   useEffect(() => {
-    if (marker && onClick) {
-      console.log('add click listener!!!');
+    if (marker && onClick && !marker['hasClickAttribute']) {
+      console.log('add click listener to vehicle!');
+      marker['hasClickAttribute'] = true;
       marker.addListener('click', onClick);
     }
 
     if (marker && onDoubleClick && !marker['hasDoubleClickAttribute']) {
-      console.log('add dblclick listener!!!');
+      console.log('add dblclick listener to vehicle!');
       marker['hasDoubleClickAttribute'] = true;
-      //if(marker.hasDblclickAttribute)
       marker.addListener('dblclick', onDoubleClick);
     }
   }, [onClick, onDoubleClick]);
