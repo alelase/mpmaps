@@ -53,7 +53,7 @@ var Marker = function (_a) {
             marker['hasDoubleClickAttribute'] = true;
             marker.addListener('dblclick', onDoubleClick);
         }
-    }, [onClick, onDoubleClick]);
+    }, [onClick, onDoubleClick, marker]);
     useEffect(function () {
         if (marker) {
             marker.setOptions(__assign(__assign({}, options), { map: map }));

@@ -51,7 +51,7 @@ const Marker: React.FC<
       marker['hasDoubleClickAttribute'] = true;
       marker.addListener('dblclick', onDoubleClick);
     }
-  }, [onClick, onDoubleClick]);
+  }, [onClick, onDoubleClick, marker]);
 
   useEffect(() => {
     if (marker) {
