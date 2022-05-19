@@ -48,7 +48,7 @@ var Marker = function (_a) {
             marker['hasClickAttribute'] = true;
             marker.addListener('click', onClick);
         }
-        if (marker && onDoubleClick && !marker['hasDoubleClickAttribute']) {
+        if (marker && onDoubleClick) {
             console.log('add dblclick listener to vehicle!');
             marker['hasDoubleClickAttribute'] = true;
             marker.addListener('dblclick', onDoubleClick);
