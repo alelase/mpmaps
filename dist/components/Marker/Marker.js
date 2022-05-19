@@ -43,6 +43,9 @@ var Marker = function (_a) {
         };
     }, [marker]);
     useEffect(function () {
+        if (marker) {
+            google.maps.event.clearInstanceListeners(marker);
+        }
         if (marker && onClick) {
             console.log('add click listener to vehicle!');
             marker['hasClickAttribute'] = true;
