@@ -37,20 +37,26 @@ var Polygon = function (_a) {
             //   ...options,
             //   map
             // });
+            var myCoordinates = [
+                new google.maps.LatLng(32.365923, 34.962655),
+                new google.maps.LatLng(32.291656, 34.863778),
+                new google.maps.LatLng(32.259145, 35.050546),
+                new google.maps.LatLng(32.375202, 35.088998)
+            ];
             // Define the LatLng coordinates for the polygon's path.
             // { lat: 25.774, lng: -80.19 },
             // { lat: 18.466, lng: -66.118 },
             // { lat: 32.321, lng: -64.757 },
             // { lat: 25.774, lng: -80.19 }
-            var triangleCoords = [
-                { lat: 34.925, lng: 32.279 },
-                { lat: 34.825, lng: 32.208 },
-                { lat: 34.973, lng: 32.195 },
-                { lat: 34.925, lng: 32.279 }
-            ];
+            // const triangleCoords = [
+            //   { lat: 34.925, lng: 32.279 },
+            //   { lat: 34.825, lng: 32.208 },
+            //   { lat: 34.973, lng: 32.195 },
+            //   { lat: 34.925, lng: 32.279 }
+            // ];
             // Construct the polygon.
             var bermudaTriangle = new google.maps.Polygon({
-                paths: triangleCoords,
+                paths: myCoordinates,
                 strokeColor: '#3467ab',
                 strokeOpacity: 0.8,
                 strokeWeight: 2,
