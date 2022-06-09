@@ -78,7 +78,7 @@ const Polygon: React.FC<
         strokeOpacity: 0.8,
         strokeWeight: 2,
         fillColor: '#0000ff',
-        fillOpacity: 0.05
+        fillOpacity: 0.01
       });
 
       // @ts-ignore
