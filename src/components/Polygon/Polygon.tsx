@@ -37,11 +37,26 @@ const Polygon: React.FC<
       //   map
       // });
 
+      // const myCoordinates = [
+      //   new google.maps.LatLng(32.365923, 34.962655),
+      //   new google.maps.LatLng(32.291656, 34.863778),
+      //   new google.maps.LatLng(32.259145, 35.050546),
+      //   new google.maps.LatLng(32.375202, 35.088998)
+      // ];
+
       const myCoordinates = [
-        new google.maps.LatLng(32.365923, 34.962655),
-        new google.maps.LatLng(32.291656, 34.863778),
-        new google.maps.LatLng(32.259145, 35.050546),
-        new google.maps.LatLng(32.375202, 35.088998)
+        new google.maps.LatLng(32.175369, 34.885525),
+        new google.maps.LatLng(32.235212, 34.883465),
+        new google.maps.LatLng(32.238697, 34.860806),
+        new google.maps.LatLng(32.236954, 34.850506),
+        new google.maps.LatLng(32.222433, 34.842953),
+        new google.maps.LatLng(32.225338, 34.840206),
+        new google.maps.LatLng(32.22708, 34.83128),
+        new google.maps.LatLng(32.217786, 34.836773),
+        new google.maps.LatLng(32.203843, 34.834027),
+        new google.maps.LatLng(32.194546, 34.830593),
+        new google.maps.LatLng(32.178856, 34.853253),
+        new google.maps.LatLng(32.173625, 34.865612)
       ];
 
       // Define the LatLng coordinates for the polygon's path.
