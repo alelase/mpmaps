@@ -29,7 +29,7 @@ var ClusterMarker = function (_a) {
     var clusterOptions = {
         icon: {
             url: "data:image/svg+xml;base64,".concat(svg),
-            origin: new google.maps.Point(-22.5, 22.5),
+            origin: new google.maps.Point(0, 0),
             scaledSize: new google.maps.Size(45, 45)
         },
         label: {
