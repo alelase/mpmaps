@@ -52,8 +52,11 @@ var Marker = function (_a) {
             marker['hasClickAttribute'] = true;
             marker.addListener('click', onClick);
             if (prevInfoWindow) {
-                // @ts-ignore
-                prevInfoWindow.close();
+                setTimeout(function () {
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
+                    prevInfoWindow.close();
+                }, 3000);
             }
         }
         if (marker && onDoubleClick) {

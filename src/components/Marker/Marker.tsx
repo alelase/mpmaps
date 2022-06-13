@@ -51,8 +51,11 @@ const Marker: React.FC<
       marker['hasClickAttribute'] = true;
       marker.addListener('click', onClick);
       if (prevInfoWindow) {
-        // @ts-ignore
-        prevInfoWindow.close();
+        setTimeout(() => {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          prevInfoWindow.close();
+        }, 3000);
       }
     }
 
