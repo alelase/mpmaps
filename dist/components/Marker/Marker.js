@@ -84,7 +84,10 @@ var Marker = function (_a) {
             map: map,
             shouldFocus: false
         });
-        return function () { return infoWindow.close(); };
+        setTimeout(function () {
+            infoWindow === null || infoWindow === void 0 ? void 0 : infoWindow.close();
+        }, 3000);
+        return function () { return infoWindow === null || infoWindow === void 0 ? void 0 : infoWindow.close(); };
     }, [showInfoWindow, infoWindowContent, marker, map]);
     return null;
 };

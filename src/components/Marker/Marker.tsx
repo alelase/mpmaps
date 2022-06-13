@@ -92,7 +92,11 @@ const Marker: React.FC<
       shouldFocus: false
     });
 
-    return () => infoWindow.close();
+    setTimeout(() => {
+      infoWindow?.close();
+    }, 3000);
+
+    return () => infoWindow?.close();
   }, [showInfoWindow, infoWindowContent, marker, map]);
 
   return null;
