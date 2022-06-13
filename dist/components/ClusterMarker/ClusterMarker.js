@@ -29,6 +29,7 @@ var ClusterMarker = function (_a) {
     var clusterOptions = {
         icon: {
             url: "data:image/svg+xml;base64,".concat(svg),
+            origin: new google.maps.Point(-22.5, 22.5),
             scaledSize: new google.maps.Size(45, 45)
         },
         label: {
@@ -38,7 +39,7 @@ var ClusterMarker = function (_a) {
         },
         zIndex: Number(google.maps.Marker.MAX_ZINDEX)
     };
-    return (React.createElement(Marker, __assign({ position: position, icon: clusterOptions.icon, label: clusterOptions.label, zIndex: clusterOptions.zIndex, onClick: onClick }, options)));
+    return (React.createElement(Marker, __assign({ position: position, icon: clusterOptions.icon, label: clusterOptions.label, zIndex: clusterOptions.zIndex, onClick: onClick, showInfoWindow: false }, options)));
 };
 export default ClusterMarker;
 //# sourceMappingURL=ClusterMarker.js.map
