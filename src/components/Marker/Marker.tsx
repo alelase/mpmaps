@@ -17,6 +17,8 @@ const Marker: React.FC<
   ...options
 }) => {
   const [marker, setMarker] = useState<google.maps.Marker>();
+  const [prevInfoWindow, setPrevInfoWindow] = useState(null);
+
   const map = useContext(MapContext);
 
   useEffect(() => {
@@ -48,6 +50,10 @@ const Marker: React.FC<
       console.log('add click listener to vehicle!');
       marker['hasClickAttribute'] = true;
       marker.addListener('click', onClick);
+      if (prevInfoWindow) {
+        // @ts-ignore
+        prevInfoWindow.close();
+      }
     }
 
     if (marker && onDoubleClick) {
@@ -73,6 +79,9 @@ const Marker: React.FC<
       content: infoWindowContent,
       disableAutoPan: true
     });
+
+    // @ts-ignore
+    setPrevInfoWindow(infoWindow);
 
     infoWindow.open({
       anchor: marker,

@@ -25,6 +25,7 @@ import MapContext from '../../contexts/MapContext';
 var Marker = function (_a) {
     var onClick = _a.onClick, onDoubleClick = _a.onDoubleClick, infoWindowContent = _a.infoWindowContent, showInfoWindow = _a.showInfoWindow, options = __rest(_a, ["onClick", "onDoubleClick", "infoWindowContent", "showInfoWindow"]);
     var _b = useState(), marker = _b[0], setMarker = _b[1];
+    var _c = useState(null), prevInfoWindow = _c[0], setPrevInfoWindow = _c[1];
     var map = useContext(MapContext);
     useEffect(function () {
         if (!marker) {
@@ -50,6 +51,10 @@ var Marker = function (_a) {
             console.log('add click listener to vehicle!');
             marker['hasClickAttribute'] = true;
             marker.addListener('click', onClick);
+            if (prevInfoWindow) {
+                // @ts-ignore
+                prevInfoWindow.close();
+            }
         }
         if (marker && onDoubleClick) {
             console.log('add dblclick listener to vehicle!');
@@ -69,6 +74,8 @@ var Marker = function (_a) {
             content: infoWindowContent,
             disableAutoPan: true
         });
+        // @ts-ignore
+        setPrevInfoWindow(infoWindow);
         infoWindow.open({
             anchor: marker,
             map: map,
