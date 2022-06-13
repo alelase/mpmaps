@@ -26,6 +26,7 @@ const ClusterMarker: React.FC<ClusterMarkerOptions> = ({
   const clusterOptions = {
     icon: {
       url: `data:image/svg+xml;base64,${svg}`,
+      origin: new google.maps.Point(22.5, 22.5),
       scaledSize: new google.maps.Size(45, 45)
     },
     label: {
@@ -43,6 +44,7 @@ const ClusterMarker: React.FC<ClusterMarkerOptions> = ({
       label={clusterOptions.label}
       zIndex={clusterOptions.zIndex}
       onClick={onClick}
+      showInfoWindow={false}
       {...options}
     />
   );
