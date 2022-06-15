@@ -49,7 +49,7 @@ const Marker: React.FC<
     if (marker && onClick) {
       console.log('add click listener to vehicle!');
       marker['hasClickAttribute'] = true;
-      marker.addListener('click', onClick);
+
       if (prevInfoWindow) {
         setTimeout(() => {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -57,6 +57,28 @@ const Marker: React.FC<
           prevInfoWindow.close();
         }, 3000);
       }
+
+      marker.addListener('click', () => {
+        const infoWindow = new google.maps.InfoWindow({
+          content: infoWindowContent,
+          disableAutoPan: true
+        });
+        // @ts-ignore
+        setPrevInfoWindow(infoWindow);
+
+        infoWindow.open({
+          anchor: marker,
+          map,
+          shouldFocus: false
+        });
+
+        setTimeout(() => {
+          infoWindow?.close();
+        }, 3000);
+
+        //call callback function
+        onClick();
+      });
     }
 
     if (marker && onDoubleClick) {
@@ -75,29 +97,29 @@ const Marker: React.FC<
     }
   }, [marker, options]);
 
-  useEffect(() => {
-    if (!showInfoWindow) return;
-
-    const infoWindow = new google.maps.InfoWindow({
-      content: infoWindowContent,
-      disableAutoPan: true
-    });
-
-    // @ts-ignore
-    setPrevInfoWindow(infoWindow);
-
-    infoWindow.open({
-      anchor: marker,
-      map,
-      shouldFocus: false
-    });
-
-    setTimeout(() => {
-      infoWindow?.close();
-    }, 3000);
-
-    return () => infoWindow?.close();
-  }, [showInfoWindow, infoWindowContent, marker, map]);
+  // useEffect(() => {
+  //   if (!showInfoWindow) return;
+  //
+  //   const infoWindow = new google.maps.InfoWindow({
+  //     content: infoWindowContent,
+  //     disableAutoPan: true
+  //   });
+  //
+  //   // @ts-ignore
+  //   setPrevInfoWindow(infoWindow);
+  //
+  //   infoWindow.open({
+  //     anchor: marker,
+  //     map,
+  //     shouldFocus: false
+  //   });
+  //
+  //   setTimeout(() => {
+  //     infoWindow?.close();
+  //   }, 3000);
+  //
+  //   return () => infoWindow?.close();
+  // }, [showInfoWindow, infoWindowContent, marker, map]);
 
   return null;
 };

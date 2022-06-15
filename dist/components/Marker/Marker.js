@@ -50,7 +50,6 @@ var Marker = function (_a) {
         if (marker && onClick) {
             console.log('add click listener to vehicle!');
             marker['hasClickAttribute'] = true;
-            marker.addListener('click', onClick);
             if (prevInfoWindow) {
                 setTimeout(function () {
                     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -58,6 +57,24 @@ var Marker = function (_a) {
                     prevInfoWindow.close();
                 }, 3000);
             }
+            marker.addListener('click', function () {
+                var infoWindow = new google.maps.InfoWindow({
+                    content: infoWindowContent,
+                    disableAutoPan: true
+                });
+                // @ts-ignore
+                setPrevInfoWindow(infoWindow);
+                infoWindow.open({
+                    anchor: marker,
+                    map: map,
+                    shouldFocus: false
+                });
+                setTimeout(function () {
+                    infoWindow === null || infoWindow === void 0 ? void 0 : infoWindow.close();
+                }, 3000);
+                //call callback function
+                onClick();
+            });
         }
         if (marker && onDoubleClick) {
             console.log('add dblclick listener to vehicle!');
@@ -70,25 +87,29 @@ var Marker = function (_a) {
             marker.setOptions(__assign(__assign({}, options), { map: map }));
         }
     }, [marker, options]);
-    useEffect(function () {
-        if (!showInfoWindow)
-            return;
-        var infoWindow = new google.maps.InfoWindow({
-            content: infoWindowContent,
-            disableAutoPan: true
-        });
-        // @ts-ignore
-        setPrevInfoWindow(infoWindow);
-        infoWindow.open({
-            anchor: marker,
-            map: map,
-            shouldFocus: false
-        });
-        setTimeout(function () {
-            infoWindow === null || infoWindow === void 0 ? void 0 : infoWindow.close();
-        }, 3000);
-        return function () { return infoWindow === null || infoWindow === void 0 ? void 0 : infoWindow.close(); };
-    }, [showInfoWindow, infoWindowContent, marker, map]);
+    // useEffect(() => {
+    //   if (!showInfoWindow) return;
+    //
+    //   const infoWindow = new google.maps.InfoWindow({
+    //     content: infoWindowContent,
+    //     disableAutoPan: true
+    //   });
+    //
+    //   // @ts-ignore
+    //   setPrevInfoWindow(infoWindow);
+    //
+    //   infoWindow.open({
+    //     anchor: marker,
+    //     map,
+    //     shouldFocus: false
+    //   });
+    //
+    //   setTimeout(() => {
+    //     infoWindow?.close();
+    //   }, 3000);
+    //
+    //   return () => infoWindow?.close();
+    // }, [showInfoWindow, infoWindowContent, marker, map]);
     return null;
 };
 export default Marker;
