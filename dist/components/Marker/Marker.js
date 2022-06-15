@@ -44,10 +44,10 @@ var Marker = function (_a) {
         };
     }, [marker]);
     useEffect(function () {
-        if (marker) {
-            google.maps.event.clearInstanceListeners(marker);
-        }
-        if (marker && onClick) {
+        // if (marker) {
+        //   google.maps.event.clearInstanceListeners(marker);
+        // }
+        if (marker && onClick && !marker['hasClickAttribute']) {
             console.log('add click listener to vehicle!');
             marker['hasClickAttribute'] = true;
             if (prevInfoWindow) {
@@ -78,7 +78,7 @@ var Marker = function (_a) {
                 onClick();
             });
         }
-        if (marker && onDoubleClick) {
+        if (marker && onDoubleClick && !marker['hasDoubleClickAttribute']) {
             console.log('add dblclick listener to vehicle!');
             marker['hasDoubleClickAttribute'] = true;
             marker.addListener('dblclick', onDoubleClick);

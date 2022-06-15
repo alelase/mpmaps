@@ -42,11 +42,11 @@ const Marker: React.FC<
   }, [marker]);
 
   useEffect(() => {
-    if (marker) {
-      google.maps.event.clearInstanceListeners(marker);
-    }
+    // if (marker) {
+    //   google.maps.event.clearInstanceListeners(marker);
+    // }
 
-    if (marker && onClick) {
+    if (marker && onClick && !marker['hasClickAttribute']) {
       console.log('add click listener to vehicle!');
       marker['hasClickAttribute'] = true;
 
@@ -83,7 +83,7 @@ const Marker: React.FC<
       });
     }
 
-    if (marker && onDoubleClick) {
+    if (marker && onDoubleClick && !marker['hasDoubleClickAttribute']) {
       console.log('add dblclick listener to vehicle!');
       marker['hasDoubleClickAttribute'] = true;
       marker.addListener('dblclick', onDoubleClick);
