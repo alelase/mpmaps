@@ -66,11 +66,13 @@ const Marker: React.FC<
         // @ts-ignore
         setPrevInfoWindow(infoWindow);
 
-        infoWindow.open({
-          anchor: marker,
-          map,
-          shouldFocus: false
-        });
+        if (showInfoWindow) {
+          infoWindow.open({
+            anchor: marker,
+            map,
+            shouldFocus: false
+          });
+        }
 
         setTimeout(() => {
           infoWindow?.close();

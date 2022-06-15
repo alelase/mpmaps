@@ -64,11 +64,13 @@ var Marker = function (_a) {
                 });
                 // @ts-ignore
                 setPrevInfoWindow(infoWindow);
-                infoWindow.open({
-                    anchor: marker,
-                    map: map,
-                    shouldFocus: false
-                });
+                if (showInfoWindow) {
+                    infoWindow.open({
+                        anchor: marker,
+                        map: map,
+                        shouldFocus: false
+                    });
+                }
                 setTimeout(function () {
                     infoWindow === null || infoWindow === void 0 ? void 0 : infoWindow.close();
                 }, 3000);
