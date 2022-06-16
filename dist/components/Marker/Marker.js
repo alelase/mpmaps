@@ -51,17 +51,18 @@ var Marker = function (_a) {
             console.log('add click listener to vehicle!');
             marker['hasClickAttribute'] = true;
             if (prevInfoWindow) {
-                setTimeout(function () {
-                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                    // @ts-ignore
-                    prevInfoWindow.close();
-                }, 3000);
+                // setTimeout(() => {
+                //   eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                //   @ts-ignore
+                prevInfoWindow.close();
+                // }, 3000);
             }
             marker.addListener('click', function () {
                 var infoWindow = new google.maps.InfoWindow({
                     content: infoWindowContent,
                     disableAutoPan: true
                 });
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 setPrevInfoWindow(infoWindow);
                 if (showInfoWindow) {

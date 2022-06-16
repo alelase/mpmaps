@@ -51,11 +51,11 @@ const Marker: React.FC<
       marker['hasClickAttribute'] = true;
 
       if (prevInfoWindow) {
-        setTimeout(() => {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          prevInfoWindow.close();
-        }, 3000);
+        // setTimeout(() => {
+        //   eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        //   @ts-ignore
+        prevInfoWindow.close();
+        // }, 3000);
       }
 
       marker.addListener('click', () => {
@@ -63,6 +63,7 @@ const Marker: React.FC<
           content: infoWindowContent,
           disableAutoPan: true
         });
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         setPrevInfoWindow(infoWindow);
 
