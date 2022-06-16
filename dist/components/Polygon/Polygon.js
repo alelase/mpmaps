@@ -71,7 +71,7 @@ var Polygon = function (_a) {
             // Construct the polygon.
             var bermudaTriangle = new google.maps.Polygon({
                 paths: myCoordinates,
-                strokeColor: '#3467ab',
+                strokeColor: '#34ab67',
                 strokeOpacity: 0.8,
                 strokeWeight: 2,
                 fillColor: '#0000ff',

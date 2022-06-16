@@ -62,10 +62,10 @@ var Marker = function (_a) {
                     content: infoWindowContent,
                     disableAutoPan: true
                 });
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
-                setPrevInfoWindow(infoWindow);
                 if (showInfoWindow) {
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
+                    setPrevInfoWindow(infoWindow);
                     infoWindow.open({
                         anchor: marker,
                         map: map,
