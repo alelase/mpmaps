@@ -48,7 +48,7 @@ var Marker = function (_a) {
             google.maps.event.clearInstanceListeners(marker);
         }
         if (marker && onClick) {
-            console.log('add click listener to vehicle!');
+            //console.log('add click listener to vehicle!');
             marker['hasClickAttribute'] = true;
             if (prevInfoWindow) {
                 // setTimeout(() => {
@@ -71,6 +71,7 @@ var Marker = function (_a) {
                         map: map,
                         shouldFocus: false
                     });
+                    console.log('marker clicked!', marker);
                 }
                 setTimeout(function () {
                     infoWindow === null || infoWindow === void 0 ? void 0 : infoWindow.close();
@@ -80,7 +81,7 @@ var Marker = function (_a) {
             });
         }
         if (marker && onDoubleClick) {
-            console.log('add dblclick listener to vehicle!');
+            //console.log('add dblclick listener to vehicle!');
             marker['hasDoubleClickAttribute'] = true;
             marker.addListener('dblclick', onDoubleClick);
         }
