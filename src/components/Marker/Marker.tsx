@@ -47,7 +47,7 @@ const Marker: React.FC<
     }
 
     if (marker && onClick) {
-      console.log('add click listener to vehicle!');
+      //console.log('add click listener to vehicle!');
       marker['hasClickAttribute'] = true;
 
       if (prevInfoWindow) {
@@ -73,6 +73,7 @@ const Marker: React.FC<
             map,
             shouldFocus: false
           });
+          console.log('marker clicked!', marker);
         }
 
         setTimeout(() => {
@@ -85,7 +86,7 @@ const Marker: React.FC<
     }
 
     if (marker && onDoubleClick) {
-      console.log('add dblclick listener to vehicle!');
+      //console.log('add dblclick listener to vehicle!');
       marker['hasDoubleClickAttribute'] = true;
       marker.addListener('dblclick', onDoubleClick);
     }
