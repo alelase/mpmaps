@@ -51,3 +51,5 @@ export const MarkerClustererComponent: React.FC<MarkerClustererProps> = ({
 
   return null;
 };
+
+export default MarkerClustererComponent;

@@ -36,7 +36,7 @@ const ClusterMarker: React.FC<ClusterMarkerOptions> = ({
     },
     zIndex: Number(google.maps.Marker.MAX_ZINDEX)
   };
-
+  console.log('clusterOptions position', position);
   return (
     <Marker
       position={position}
