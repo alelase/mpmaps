@@ -4,4 +4,4 @@ declare type MarkerClustererProps = MarkerClustererOptions & {
     children?: Array<React.ReactElement>;
 };
 export declare const MarkerClustererComponent: React.FC<MarkerClustererProps>;
-export {};
+export default MarkerClustererComponent;
