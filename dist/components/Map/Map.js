@@ -12,7 +12,6 @@ var __rest = (this && this.__rest) || function (s, e) {
 import React, { useEffect, useRef, useState } from 'react';
 import MapContext from '../../contexts/MapContext';
 import { useDeepCompareEffectForMaps } from './hooks/useDeepCompareEffectForMaps';
-import { MarkerClustererComponent } from '../MarkerClusterer';
 var Map = function (_a) {
     var onClick = _a.onClick, onIdle = _a.onIdle, onBoundsChanged = _a.onBoundsChanged, onZoomChanged = _a.onZoomChanged, children = _a.children, style = _a.style, mapId = _a.mapId, markers = _a.markers, options = __rest(_a, ["onClick", "onIdle", "onBoundsChanged", "onZoomChanged", "children", "style", "mapId", "markers"]);
     // [START maps_react_map_component_add_map_hooks]
@@ -57,10 +56,14 @@ var Map = function (_a) {
             }
             if (markers && markers.length && markers.length > 0) {
                 // Add a marker clusterer to manage the markers.
-                console.log('Add cluster to markers:', markers);
+                //console.log('Add cluster to markers:', markers);
                 // @ts-ignore
-                new MarkerClustererComponent({ markers: markers, map: map });
-                //new MarkerClusterer()
+                //new MarkerClusterer({ markers, map });
+                // let markerCluster = new MarkerClusterer(map, markers, {
+                //   imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+                //   gridSize: 10,
+                //   minimumClusterSize: 2
+                // })
             }
         }
     }, [map, onClick, onIdle, onBoundsChanged, onZoomChanged]);
