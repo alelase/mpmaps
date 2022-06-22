@@ -12,8 +12,9 @@ var __rest = (this && this.__rest) || function (s, e) {
 import React, { useEffect, useRef, useState } from 'react';
 import MapContext from '../../contexts/MapContext';
 import { useDeepCompareEffectForMaps } from './hooks/useDeepCompareEffectForMaps';
+import { MarkerClusterer } from '@googlemaps/markerclusterer';
 var Map = function (_a) {
-    var onClick = _a.onClick, onIdle = _a.onIdle, onBoundsChanged = _a.onBoundsChanged, onZoomChanged = _a.onZoomChanged, children = _a.children, style = _a.style, mapId = _a.mapId, options = __rest(_a, ["onClick", "onIdle", "onBoundsChanged", "onZoomChanged", "children", "style", "mapId"]);
+    var onClick = _a.onClick, onIdle = _a.onIdle, onBoundsChanged = _a.onBoundsChanged, onZoomChanged = _a.onZoomChanged, children = _a.children, style = _a.style, mapId = _a.mapId, markers = _a.markers, options = __rest(_a, ["onClick", "onIdle", "onBoundsChanged", "onZoomChanged", "children", "style", "mapId", "markers"]);
     // [START maps_react_map_component_add_map_hooks]
     var ref = useRef(null);
     var _b = useState(), map = _b[0], setMap = _b[1];
@@ -53,6 +54,10 @@ var Map = function (_a) {
                 map.addListener('zoom_changed', function () {
                     onZoomChanged(map.getZoom());
                 });
+            }
+            if (markers) {
+                // Add a marker clusterer to manage the markers.
+                new MarkerClusterer({ markers: markers, map: map });
             }
         }
     }, [map, onClick, onIdle, onBoundsChanged, onZoomChanged]);

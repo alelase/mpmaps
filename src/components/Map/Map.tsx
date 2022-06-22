@@ -6,6 +6,8 @@ import { useDeepCompareEffectForMaps } from './hooks/useDeepCompareEffectForMaps
 
 import Marker = google.maps.Marker;
 
+import { MarkerClusterer } from '@googlemaps/markerclusterer';
+
 interface MapProps extends google.maps.MapOptions {
   style: { [key: string]: string };
   onClick?: (e: google.maps.MapMouseEvent) => void;
@@ -73,6 +75,11 @@ const Map: React.FC<MapProps> = ({
         map.addListener('zoom_changed', () => {
           onZoomChanged(map.getZoom());
         });
+      }
+
+      if (markers) {
+        // Add a marker clusterer to manage the markers.
+        new MarkerClusterer({ markers, map });
       }
     }
   }, [map, onClick, onIdle, onBoundsChanged, onZoomChanged]);
