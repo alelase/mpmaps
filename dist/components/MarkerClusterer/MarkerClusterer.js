@@ -52,4 +52,5 @@ export var MarkerClustererComponent = function (_a) {
     }, [markers]);
     return null;
 };
+//export default MarkerClustererComponent;
 //# sourceMappingURL=MarkerClusterer.js.map

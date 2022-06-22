@@ -39,6 +39,7 @@ var ClusterMarker = function (_a) {
         },
         zIndex: Number(google.maps.Marker.MAX_ZINDEX)
     };
+    console.log('clusterOptions position', position);
     return (React.createElement(Marker, __assign({ position: position, icon: clusterOptions.icon, label: clusterOptions.label, zIndex: clusterOptions.zIndex, onClick: onClick, showInfoWindow: false }, options)));
 };
 export default ClusterMarker;

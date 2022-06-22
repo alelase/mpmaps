@@ -4,6 +4,8 @@ import MapContext from '../../contexts/MapContext';
 
 import { useDeepCompareEffectForMaps } from './hooks/useDeepCompareEffectForMaps';
 
+import Marker = google.maps.Marker;
+
 interface MapProps extends google.maps.MapOptions {
   style: { [key: string]: string };
   onClick?: (e: google.maps.MapMouseEvent) => void;
@@ -11,6 +13,7 @@ interface MapProps extends google.maps.MapOptions {
   onBoundsChanged?: (bounds: google.maps.LatLngBounds | undefined) => void;
   onZoomChanged?: (zoom: number | undefined) => void;
   mapId?: string;
+  markers?: Marker[];
 }
 
 const Map: React.FC<MapProps> = ({
@@ -21,6 +24,7 @@ const Map: React.FC<MapProps> = ({
   children,
   style,
   mapId,
+  markers,
   ...options
 }) => {
   // [START maps_react_map_component_add_map_hooks]
