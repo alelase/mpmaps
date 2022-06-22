@@ -7,6 +7,7 @@ import { useDeepCompareEffectForMaps } from './hooks/useDeepCompareEffectForMaps
 import Marker = google.maps.Marker;
 
 import { MarkerClustererComponent } from '../MarkerClusterer';
+//import { MarkerClusterer } from "@googlemaps/markerclusterer";
 
 interface MapProps extends google.maps.MapOptions {
   style: { [key: string]: string };
@@ -77,10 +78,12 @@ const Map: React.FC<MapProps> = ({
         });
       }
 
-      if (markers) {
+      if (markers && markers.length && markers.length > 0) {
         // Add a marker clusterer to manage the markers.
-        console.log('Add cluster to markers', markers);
-        MarkerClustererComponent({ markers, map });
+        console.log('Add cluster to markers:', markers);
+        // @ts-ignore
+        new MarkerClustererComponent({ markers, map });
+        //new MarkerClusterer()
       }
     }
   }, [map, onClick, onIdle, onBoundsChanged, onZoomChanged]);

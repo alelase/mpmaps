@@ -55,10 +55,12 @@ var Map = function (_a) {
                     onZoomChanged(map.getZoom());
                 });
             }
-            if (markers) {
+            if (markers && markers.length && markers.length > 0) {
                 // Add a marker clusterer to manage the markers.
-                console.log('Add cluster to markers', markers);
-                MarkerClustererComponent({ markers: markers, map: map });
+                console.log('Add cluster to markers:', markers);
+                // @ts-ignore
+                new MarkerClustererComponent({ markers: markers, map: map });
+                //new MarkerClusterer()
             }
         }
     }, [map, onClick, onIdle, onBoundsChanged, onZoomChanged]);
