@@ -48,6 +48,7 @@ export var MarkerClustererComponent = function (_a) {
             var marker = new window.google.maps.Marker(__assign({}, props));
             return marker;
         });
+        console.log('Markers to be added to cluster:', _markers);
         (_a = clusterer.current) === null || _a === void 0 ? void 0 : _a.addMarkers(_markers);
     }, [markers]);
     return null;

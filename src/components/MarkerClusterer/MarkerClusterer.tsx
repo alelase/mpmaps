@@ -46,6 +46,7 @@ export const MarkerClustererComponent: React.FC<MarkerClustererProps> = ({
       return marker;
     });
 
+    console.log('Markers to be added to cluster:', _markers);
     clusterer.current?.addMarkers(_markers);
   }, [markers]);
 
