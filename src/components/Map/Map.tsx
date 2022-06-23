@@ -4,7 +4,7 @@ import MapContext from '../../contexts/MapContext';
 
 import { useDeepCompareEffectForMaps } from './hooks/useDeepCompareEffectForMaps';
 
-import Marker = google.maps.Marker;
+//import Marker = google.maps.Marker;
 
 //import { MarkerClusterer } from '@googlemaps/markerclusterer';
 
@@ -15,7 +15,7 @@ interface MapProps extends google.maps.MapOptions {
   onBoundsChanged?: (bounds: google.maps.LatLngBounds | undefined) => void;
   onZoomChanged?: (zoom: number | undefined) => void;
   mapId?: string;
-  markers?: Marker[];
+  //markers?: Marker[];
 }
 
 const Map: React.FC<MapProps> = ({
@@ -26,7 +26,7 @@ const Map: React.FC<MapProps> = ({
   children,
   style,
   mapId,
-  markers,
+  //markers,
   ...options
 }) => {
   // [START maps_react_map_component_add_map_hooks]
@@ -77,17 +77,18 @@ const Map: React.FC<MapProps> = ({
         });
       }
 
-      if (markers && markers.length && markers.length > 0) {
-        // Add a marker clusterer to manage the markers.
-        //console.log('Add cluster to markers:', markers);
-        // @ts-ignore
-        //new MarkerClusterer({ markers, map });
-        // let markerCluster = new MarkerClusterer(map, markers, {
-        //   imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
-        //   gridSize: 10,
-        //   minimumClusterSize: 2
-        // })
-      }
+      //if (markers && markers.length && markers.length > 0) {
+      // Add a marker clusterer to manage the markers.
+      //console.log('Add cluster to markers:', markers);
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      //new MarkerClusterer({ markers, map });
+      // let markerCluster = new MarkerClusterer(map, markers, {
+      //   imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+      //   gridSize: 10,
+      //   minimumClusterSize: 2
+      // })
+      //}
     }
   }, [map, onClick, onIdle, onBoundsChanged, onZoomChanged]);
   // [END maps_react_map_component_event_hooks]

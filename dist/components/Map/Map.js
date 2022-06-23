@@ -13,7 +13,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import MapContext from '../../contexts/MapContext';
 import { useDeepCompareEffectForMaps } from './hooks/useDeepCompareEffectForMaps';
 var Map = function (_a) {
-    var onClick = _a.onClick, onIdle = _a.onIdle, onBoundsChanged = _a.onBoundsChanged, onZoomChanged = _a.onZoomChanged, children = _a.children, style = _a.style, mapId = _a.mapId, markers = _a.markers, options = __rest(_a, ["onClick", "onIdle", "onBoundsChanged", "onZoomChanged", "children", "style", "mapId", "markers"]);
+    var onClick = _a.onClick, onIdle = _a.onIdle, onBoundsChanged = _a.onBoundsChanged, onZoomChanged = _a.onZoomChanged, children = _a.children, style = _a.style, mapId = _a.mapId, 
+    //markers,
+    options = __rest(_a, ["onClick", "onIdle", "onBoundsChanged", "onZoomChanged", "children", "style", "mapId"]);
     // [START maps_react_map_component_add_map_hooks]
     var ref = useRef(null);
     var _b = useState(), map = _b[0], setMap = _b[1];
@@ -54,17 +56,18 @@ var Map = function (_a) {
                     onZoomChanged(map.getZoom());
                 });
             }
-            if (markers && markers.length && markers.length > 0) {
-                // Add a marker clusterer to manage the markers.
-                //console.log('Add cluster to markers:', markers);
-                // @ts-ignore
-                //new MarkerClusterer({ markers, map });
-                // let markerCluster = new MarkerClusterer(map, markers, {
-                //   imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
-                //   gridSize: 10,
-                //   minimumClusterSize: 2
-                // })
-            }
+            //if (markers && markers.length && markers.length > 0) {
+            // Add a marker clusterer to manage the markers.
+            //console.log('Add cluster to markers:', markers);
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            //new MarkerClusterer({ markers, map });
+            // let markerCluster = new MarkerClusterer(map, markers, {
+            //   imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+            //   gridSize: 10,
+            //   minimumClusterSize: 2
+            // })
+            //}
         }
     }, [map, onClick, onIdle, onBoundsChanged, onZoomChanged]);
     // [END maps_react_map_component_event_hooks]
